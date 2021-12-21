@@ -27,8 +27,6 @@
 
 #include <DefaultApi.h>
 
-#include <pistache/optional.h>
-
 
 namespace org::openapitools::server::api
 {
