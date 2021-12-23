@@ -25,7 +25,7 @@ DefaultApiImpl::DefaultApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rt
 }
 
 void DefaultApiImpl::ping_get(Pistache::Http::ResponseWriter &response) {
-    response.send(Pistache::Http::Code::Ok, "Do some magic\n");
+    response.send(Pistache::Http::Code::Ok, "{\"msg\":\"Pong!\"}\n");
 }
 void DefaultApiImpl::test_get(Pistache::Http::ResponseWriter &response) {
     response.send(Pistache::Http::Code::Ok, "Do some magic\n");

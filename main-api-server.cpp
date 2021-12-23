@@ -59,12 +59,17 @@ static void setUpUnixSignals(std::vector<int> quitSignals) {
 
 using namespace org::openapitools::server::api;
 
-int main() {
+int main(int argc, char *argv[]) {
 #ifdef __linux__
     std::vector<int> sigs{SIGQUIT, SIGINT, SIGTERM, SIGHUP};
     setUpUnixSignals(sigs);
 #endif
-    Pistache::Address addr(Pistache::Ipv4::any(), Pistache::Port(8080));
+    int port = 8081;
+    if(argc==2){
+        port = atoi(argv[1]);
+    }
+
+    Pistache::Address addr(Pistache::Ipv4::any(), Pistache::Port(port));
 
     httpEndpoint = new Pistache::Http::Endpoint((addr));
     auto router = std::make_shared<Pistache::Rest::Router>();
